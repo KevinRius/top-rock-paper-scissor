@@ -1,6 +1,8 @@
 let compScore = 0;
 var playerScore = 0;
 
+
+
 function computerPlay() {
     let rand = Math.floor(Math.random() * (4 - 1) + 1);
     let computerChoice;
@@ -12,12 +14,12 @@ function computerPlay() {
         computerChoice = "scissor";
     }
     return computerChoice;
-}
+}       //make a random choice for Computer
 
 function playerPlay() {
     let playerChoice = prompt("rock, paper or scissor?").toLowerCase();
     return playerChoice;
-}
+}       // prompt player to make a choice
 
 function round(playerSelection, computerSelection) {
 
@@ -48,11 +50,9 @@ function round(playerSelection, computerSelection) {
     } else {
         console.log("you need to chose rock, paper or scissor!!");
     }
-}
-
-
-
-//let score = 'player:' + playerScore + ' | computer:' + compScore;
+}       /* run a round of rock-paper-scissor, learned that parameters take variables 
+        as value, make a local copy that is not saved globally, unlike references 
+        which are kept */
 
 function game() {
 
@@ -60,7 +60,6 @@ function game() {
         let playerSelection = playerPlay();
         let computerSelection = computerPlay();
         let match = round(playerSelection, computerSelection, compScore, playerScore);
-        //console.log(match);
         let score = 'player:' + playerScore + ' | computer:' + compScore;
         console.log(score);
     }
@@ -72,6 +71,6 @@ function game() {
     } else {
         console.log("Draw!!");
     }
-}
+} // run 5 round of the game, declare points and winner
 
 game();
