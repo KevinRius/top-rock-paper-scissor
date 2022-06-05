@@ -1,3 +1,6 @@
+let compScore = 0;
+var playerScore = 0;
+
 function computerPlay() {
     let rand = Math.floor(Math.random() * (4 - 1) + 1);
     let computerChoice;
@@ -16,36 +19,59 @@ function playerPlay() {
     return playerChoice;
 }
 
-let playerSelection = playerPlay()
-let computerSelection = computerPlay();
-
-
 function round(playerSelection, computerSelection) {
 
-    let result;
-
     if (playerSelection == "rock" && computerSelection == "rock") {
-        result = "Draw";
+        console.log("Draw");
     } else if (playerSelection == "rock" && computerSelection == "paper") {
-        result = "You Lose! Paper beats Rock";
-    } else if (playerSelection == "rock" && computerSelection == "Scissor") {
-        result = "You Win! Rock beats Scissor";
+        console.log("You Lose! Paper beats Rock");
+        compScore++;
+    } else if (playerSelection == "rock" && computerSelection == "scissor") {
+        console.log("You Win! Rock beats Scissor");
+        playerScore++;
     } else if (playerSelection == "paper" && computerSelection == "rock") {
-        result = "You Win! Paper beats Rock";
+        console.log("You Win! Paper beats Rock");
+        playerScore++;
     } else if (playerSelection == "paper" && computerSelection == "paper") {
-        result = "Draw";
+        console.log("Draw");
     } else if (playerSelection == "paper" && computerSelection == "scissor") {
-        result = "You Lose! Scissor beats Paper";
+        console.log("You Lose! Scissor beats Paper");
+        compScore++;
     } else if (playerSelection == "scissor" && computerSelection == "rock") {
-        result = "You Lose! Rock beats Scissor";
+        console.log("You Lose! Rock beats Scissor");
+        compScore++;
     } else if (playerSelection == "scissor" && computerSelection == "paper") {
-        result = "You Win! Scissor beats Paper";
+        console.log("You Win! Scissor beats Paper");
+        playerScore++;
     } else if (playerSelection == "scissor" && computerSelection == "scissor") {
-        result = "Drax";
+        console.log("Draw");
     } else {
-        result = "you need to chose rock, paper or scissor!!";
+        console.log("you need to chose rock, paper or scissor!!");
     }
-    return result;
 }
 
-console.log(round(playerSelection, computerSelection));
+
+
+//let score = 'player:' + playerScore + ' | computer:' + compScore;
+
+function game() {
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = playerPlay();
+        let computerSelection = computerPlay();
+        let match = round(playerSelection, computerSelection, compScore, playerScore);
+        //console.log(match);
+        let score = 'player:' + playerScore + ' | computer:' + compScore;
+        console.log(score);
+    }
+
+    if (playerScore > compScore) {
+        console.log("Player Win!!");
+    } else if (playerScore < compScore) {
+        console.log("Computer Win!!");
+    } else {
+        console.log("Draw!!");
+    }
+}
+
+game();
